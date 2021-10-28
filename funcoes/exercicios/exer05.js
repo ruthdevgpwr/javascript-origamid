@@ -1,0 +1,8 @@
+// Crie uma função que retorne o tipo de
+// dado do argumento passado nela (typeof)
+
+function tipoDeDado(dado){
+    return typeof dado;
+}
+
+console.log(tipoDeDado(true));
