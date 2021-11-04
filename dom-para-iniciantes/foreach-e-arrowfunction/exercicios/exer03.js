@@ -9,4 +9,4 @@ imgs.forEach(() => {
 console.log(i++)
 });
 
-imgs.forEach(() => i++);s
+imgs.forEach(() => i++);
