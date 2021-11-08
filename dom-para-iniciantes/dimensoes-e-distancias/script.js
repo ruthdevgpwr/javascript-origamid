@@ -1,37 +1,52 @@
-const listaAnimais = document.querySelector('.animais-lista')
+// Verifique a distância da primeira imagem
+// em relação ao topo da página
 
-const height = listaAnimais.scrollHeight
-const animaisTop = listaAnimais.offsetTop
-console.log(height)
-console.log(animaisTop)
+const primeiraImagem = document.querySelector('img')
 
-const primeiroh2 = document.querySelector('h2')
-const h2left = primeiroh2.offsetLeft
-console.log(h2left)
+const distanciaTopoImg = primeiraImagem.offsetTop
 
-const rect = primeiroh2.getBoundingClientRect()
+console.log(distanciaTopoImg)
 
-console.log(rect)
-console.log(rect.height)
+// Retorne a soma da largura de todas as imagens
 
-console.log(
-    window.innerWidth,
-    window.innerHeight,
-    window.outerWidth,
-    window.outerHeight,
-    window.pageYOffset,
-)
+function somaImagens() {
+    const imagens = document.querySelectorAll('img')
+    let soma = 0
+    imagens.forEach((imagem) => {
+        soma = soma + imagem.offsetWidth
+    })
 
-const h2rect = primeiroh2.getBoundingClientRect()
-
-if(h2rect.top < 0 ) {
-    console.log('Passou do elemento')
+    console.log(soma)
 }
 
-const small = window.matchMedia('(max-width: 600px')
+window.onload = function() {
+    somaImagens()
+}
 
-if(small.matches){
-    console.log('Usurário mobile')
-} else {
-    console.log('Usuário Desktop')
+// Verifique se os links da página possuem
+// o mínimo recomendado para telas utilizadas
+// com o dedo. (48px/48px de acordo com o google)
+
+const links = document.querySelectorAll('a')
+
+links.forEach((link) => {
+    const linkWidth = link.offsetWidth
+    const linkHeight = link.offsetHeight
+    if(linkWidth >= 48 && linkHeight >= 48) {
+        console.log(link, 'Possui boa acessibilidade')
+    } else {
+        console.log(link, 'Não possui boa acessibilidade')
+    }
+})
+
+console.log(links)
+
+// Se o browser for menor que 720px,
+// adicione a classe menu-mobile ao menu
+
+const browserSmall = window.matchMedia('(max-width: 720px)').matches
+
+if (browserSmall) {
+    const menu = document.querySelector('.menu')
+    menu.classList.add('menu-mobile')
 }
