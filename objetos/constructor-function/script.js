@@ -58,3 +58,6 @@ const ul = new Dom('ul')
 listaItens.addClass('ativar')
 
 ul.addClass('ativar-ul')
+
+const ultimaLi = new Dom('li:last-child')
+ultimaLi.addClass('ativar-ultima-li')
